@@ -49,7 +49,7 @@ class Calendar extends Component {
     className = className.join(" ")
     return (<Datetime
       onChange={this.props.onChange.bind(this)}
-      inputProps={{ className , readOnly: true}} />);
+      inputProps={{ className: "form-control" , readOnly: true}} />);
       /*return (<SingleDatePicker
         block={true}
         numberOfMonths={1}

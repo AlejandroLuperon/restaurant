@@ -5,13 +5,13 @@ class ActiveOrder extends Component {
         super(props);
         this.state = {
             activeOrder: props.activeOrder,
-            seconds: 57,
-            minutes: 1
+            seconds: 0,
+            minutes: 0
         }
         setInterval(() => {
-            let {seconds, minutes} = this.state;
-            seconds+=1;
-            if(seconds === 60) {
+            let { seconds, minutes } = this.state;
+            seconds += 1;
+            if (seconds === 60) {
                 seconds = 0;
                 minutes += 1;
             }
@@ -23,13 +23,14 @@ class ActiveOrder extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({
-            activeOrder: nextProps.activeOrder
-        })
+        if (nextProps.activeOrder !== this.state.activeOrder)
+            this.setState({
+                activeOrder: nextProps.activeOrder
+            })
     }
 
     render() {
-        let { activeOrder, seconds, minutes} = this.state;
+        let { activeOrder, seconds, minutes } = this.state;
         // let time = activeOrder.time;
         // let minutes = Math.floor(time / 60);
         // let seconds = time - Math.floor(time / 60);
@@ -44,14 +45,15 @@ class ActiveOrder extends Component {
                 <th>
                     {activeOrder.table_number}
                 </th>
-                <td>
-                    {activeOrder.guest}
-                </td>
+                
                 <td>
                     {activeOrder.name}
                 </td>
                 <td>
                     {activeOrder.count}
+                </td>
+                <td>
+                    {activeOrder.special_instructions}
                 </td>
                 <td>
                     {minutes + ":" + seconds}

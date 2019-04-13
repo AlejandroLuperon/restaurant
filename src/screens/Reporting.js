@@ -7,25 +7,25 @@ import {
 
 const data = [
   {
-    name: 'Apr 12', uv: 4000, pv: 2400, amt: 2400,
+    name: 'Apr 12', Dinner: 4000, Breakfast: 2400, amt: 2400,
   },
   {
-    name: 'Apr 13', uv: 3000, pv: 1398, amt: 2210,
+    name: 'Apr 13', Dinner: 3000, Breakfast: 1398, amt: 2210,
   },
   {
-    name: 'Apr 14', uv: 2000, pv: 9800, amt: 2290,
+    name: 'Apr 14', Dinner: 2000, Breakfast: 9800, amt: 2290,
   },
   {
-    name: 'Apr 15', uv: 2780, pv: 3908, amt: 2000,
+    name: 'Apr 15', Dinner: 2780, Breakfast: 3908, amt: 2000,
   },
   {
-    name: 'Apr 16', uv: 1890, pv: 4800, amt: 2181,
+    name: 'Apr 16', Dinner: 1890, Breakfast: 4800, amt: 2181,
   },
   {
-    name: 'Apr 17', uv: 2390, pv: 3800, amt: 2500,
+    name: 'Apr 17', Dinner: 2390, Breakfast: 3800, amt: 2500,
   },
   {
-    name: 'Apr 18', uv: 3490, pv: 4300, amt: 2100,
+    name: 'Apr 18', Dinner: 3490, Breakfast: 4300, amt: 2100,
   },
 ];
 
@@ -124,6 +124,7 @@ class Reporting extends Component {
           <div className="flex-column d-flex align-items-start justify-content-center">
             <label className="calendar-label">Search</label>
             <input
+              className="form-control"
               name="query"
               onChange={this.onChangeQuery.bind(this)}
               value={this.state.query} />
@@ -141,10 +142,11 @@ class Reporting extends Component {
           <div className="col-8">
             <div className="card linechart-card">
               <div className="card-header">
-                Statistics
+                Daily Earnings
             </div>
               <div className="card-body">
                 <ResponsiveContainer width={600} height={300}>
+
                   <LineChart
                     data={data}
                     margin={{
@@ -156,8 +158,8 @@ class Reporting extends Component {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-                    <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                    <Line type="monotone" dataKey="Breakfast" stroke="#8884d8" activeDot={{ r: 8 }} />
+                    <Line type="monotone" dataKey="Dinner" stroke="#82ca9d" />
                   </LineChart>
                 </ResponsiveContainer>
               </div>

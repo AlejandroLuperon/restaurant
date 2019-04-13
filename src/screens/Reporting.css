@@ -22,7 +22,7 @@
   border-radius: 0;
 }
 .linechart-card .card-header {
-  font-family: OpenSans;
+
   font-size: 20px;
   color: #000000;
   opacity: 0.87;
@@ -39,7 +39,7 @@
 }
 .expense-card .card-header {
   background: #fff;
-  font-family: ProximaNova;
+
   font-size: 12px;
   font-weight: 600;
   color: #9fa9ba;
@@ -48,11 +48,11 @@
 
 
 .card-body {
-  font-family: OpenSans;
+
   color: #354052;
 }
 .card-body p {
- 
+
   font-size: 20px;
 }
 .card-body h4 {
@@ -60,7 +60,7 @@
 }
 
 .dishes-card .card-header, .chef-card .card-header{
-  font-family: OpenSans;
+
   font-size: 16px;
   color: #3c4144;
 }
@@ -74,7 +74,7 @@
   border:none;
   border-bottom:1px solid #d7d7e6;
   color: #ffb946;
-  font-family: OpenSans;
+
   font-size: 14px;
 
 }
@@ -89,14 +89,14 @@
 }
 
 .chef-card h3{
-  font-family: OpenSans;
+
   font-size: 14px;
   font-weight: 600;
   color: #3c4144;
 }
 
 .chef-card p {
-  font-family: OpenSans;
+
   font-size: 14px;
   font-weight: 600;
   color: #949ba0;
