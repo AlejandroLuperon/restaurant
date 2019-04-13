@@ -65,7 +65,7 @@ class ActiveOrder extends Component {
                     <div className="Active">Active</div>
                 </td>
                 <td>
-                    <button className="resolve" onClick={() => { this.props.markComplete(activeOrder.id) }}>Resolve</button>
+                    <button className="resolve" onClick={() => { this.props.markComplete(activeOrder.special_id) }}>Resolve</button>
                 </td>
             </tr>
         )
