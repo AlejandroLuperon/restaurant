@@ -36,7 +36,7 @@ class Calendar extends Component {
     }
 
     return (
-      <label>{this.props.label}</label>
+      <label className="calendar-label">{this.props.label}</label>
     );
   }
 

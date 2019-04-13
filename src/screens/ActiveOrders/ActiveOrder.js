@@ -60,7 +60,10 @@ class ActiveOrder extends Component {
                     {activeOrder.chef}
                 </td>
                 <td>
-                    <div className="done" onClick={() => { this.props.markComplete(activeOrder.id) }}>Done</div>
+                    <div className="Active">Active</div>
+                </td>
+                <td>
+                    <button onClick={() => { this.props.markComplete(activeOrder.id) }}>Resolve</button>
                 </td>
             </tr>
         )
