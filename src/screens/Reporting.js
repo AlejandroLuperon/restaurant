@@ -6,8 +6,12 @@ class Reporting extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: {}
+      results: []
     }
+  }
+
+  componentWillMount() {
+    this.getReport(null);
   }
 
   getReport(query) {
@@ -30,20 +34,37 @@ class Reporting extends Component {
     }).then((response) => {
       return response.json();
     }).then((data)=>{
-
+      this.setState({
+        results: data
+      });
     });
   }
 
-  componentDidMount() {
-    this.getReport();
-  }
-  
   onChangeStartDate(value) {
     this.setState({
       start_date: value.valueOf()
+    }, () => {
+      let query = this.getQuery();
+      this.getReport(query);
+    });
+  }
+
+  onChangeEndDate(value) {
+    this.setState({
+      end_date: value.valueOf()
+    }, () => {
+      let query = this.getQuery();
+      this.getReport(query);
     })
-    let query = this.getQuery();
-    this.getReport(query);
+  }
+
+  onChangeQuery(event) {
+    this.setState({
+      [event.target.name]: [event.target.value]
+    }, () => {
+      let query = this.getQuery();
+      this.getReport(query);
+    });
   }
 
   getQuery() {
@@ -67,26 +88,7 @@ class Reporting extends Component {
     return query;
   }
 
-  onChangeEndDate(value) {
-    this.setState({
-      end_date: value.valueOf()
-    }, () => {
-      let query = this.getQuery();
-      this.getReport(query);
-    })
-  }
-
-  onChangeQuery(event) {
-    this.setState({
-      [event.target.name]: [event.target.value]
-    }, () => {
-      let query = this.getQuery();
-      this.getReport(query);
-    });
-  }
-
   render(){
-    const {results} = this.state;
     return (
       <div className="container">
         <div className="flex-row d-flex reporting-header">
@@ -115,16 +117,16 @@ class Reporting extends Component {
           </thead>
           <tbody>
             {
-              Object.keys(results).map((key, index) => (
-                <tr key={index}>
-                  <td>{results[key]}</td>
-                  <td>{key}</td>
-                </tr>
-              ))
+              this.state.results.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.name}</td>
+                    <td>{item.count}</td>
+                  </tr>
+                )
+              )
             }
           </tbody>
         </table>
-
       </div>
     )
   }
