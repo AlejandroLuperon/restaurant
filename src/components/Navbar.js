@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import ActiveOrders from '../screens/ActiveOrders/ActiveOrders';
+import Reporting from '../screens/Reporting';
 import Menu from '../screens/Menu/Menu';
+import logo from '../assets/logo.png';
+import Link from './Link';
 import "./Navbar.css"
+import one from '../assets/navbar/1.svg';
+import two from '../assets/navbar/2.svg';
+import three from '../assets/navbar/3.svg';
+import four from '../assets/navbar/4.svg';
+import five from '../assets/navbar/5.svg';
 
 class Navbar extends Component {
 
@@ -14,36 +22,18 @@ class Navbar extends Component {
     return (
       <div className="row margin-0" >
         <div className="col-2 padding-0">
-          <nav className=" sidebar" style={{ maxHeight: window.innerHeight, height: "100%" }}>
-            {/* <div className="oval"></div> */}
+          <nav className=" sidebar sidebar-container" style={{ maxHeight: window.innerHeight, height: "100%" }}>
             <div className="sidebar-item sidebar-logo" href="#">
+              <img src={logo} />
               <div className="sidebar-item-logo">
-                FOODBAR
+                FOOD BAR
               </div>
             </div>
-
-            <div className="sidebar-item" href="#">
-              <div className="sidebar-item-text active" onClick={() => this.handleClick("/active-orders")}>
-               Dashboard
-              </div>
-            </div>
-
-            <div className="sidebar-item" href="#"  onClick={() => this.handleClick("/reporting")}>
-              <div className="sidebar-item-text">
-               Reporting
-              </div>
-            </div>
-
-            <div className="sidebar-item" href="#"  onClick={() => this.handleClick("/menu")}>
-              <div className="sidebar-item-text">
-               Menu Management
-              </div>
-            </div>
-
-            <div className="sidebar-item" href="#"  onClick={() => this.handleClick("/staff")}>
-              <div className="sidebar-item-text">
-               Staff Management
-              </div>
+            <div style={{paddingLeft: '15px'}}>
+              <Link src={one} onClick={() => this.handleClick("/active-orders")} label="Dashboard" />
+              <Link src={two} onClick={() => this.handleClick("/reporting")} label="Reporting" />
+              <Link src={three} onClick={() => this.handleClick("/menu")} label="Menu Management" />
+              <Link src={four} onClick={() => this.handleClick("/staff")} label="Staff Management" />
             </div>
           </nav>
         </div>
@@ -56,8 +46,8 @@ class Navbar extends Component {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav ml-auto">
                 {
-                  menuItems.map(item => (
-                    <li key={item.path} className="nav-item" onClick={() => this.handleClick(item.path)}>
+                  menuItems.map((item, index) => (
+                    <li key={index} className="nav-item" onClick={() => this.handleClick(item.path)}>
                       <a className="nav-link">{item.name}<span className="sr-only">(current)</span></a>
                     </li>
                   ))
@@ -65,10 +55,11 @@ class Navbar extends Component {
               </ul>
             </div>
           </nav>
-          <div class="content" style={{ minHeight: window.innerHeight }}>
+          <div className="content" style={{ minHeight: window.innerHeight }}>
 
             <Route path="/active-orders" component={ActiveOrders} />
             <Route path="/menu" component={Menu} />
+            <Route path="/reporting" component={Reporting} />
           </div>
         </div>
 

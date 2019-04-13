@@ -78,7 +78,7 @@ class ActiveOrders extends Component {
                         </div>
                     </div>
                 </div>
-                <div class="orders-title">
+                <div className="orders-title">
                     LIST OF ORDERS
                 </div>
                 <table className="table" >

@@ -15,7 +15,7 @@ class Reporting extends Component {
   }
 
   getReport(query) {
-    let path = "orders"
+    let path = "orders?vendor_id=1"
     let url = "http://54.166.71.233/" + path;
 
     if (query != null) {
@@ -32,6 +32,7 @@ class Reporting extends Component {
       redirect: "follow",
       referrer: "no-referrer"
     }).then((response) => {
+      //console.log("response", response.json());
       return response.json();
     }).then((data)=>{
       this.setState({

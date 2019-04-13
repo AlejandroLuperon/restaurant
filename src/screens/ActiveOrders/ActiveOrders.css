@@ -12,7 +12,7 @@
     width: 46px;
     height: 22px;
     opacity: 0.6;
-    font-family: OpenSans;
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     font-weight: normal;
     font-style: normal;
@@ -29,7 +29,7 @@
     border: 1px solid #d7d7e6;
     width: 90px;
     height: 22px;
-    font-family: OpenSans;
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     font-weight: 600;
     font-style: normal;
@@ -43,7 +43,7 @@
     border: 1px solid #d7d7e6;
     width: 90px;
     height: 22px;
-    font-family: OpenSans;
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     font-weight: 600;
     font-style: normal;
@@ -71,7 +71,7 @@
 .count-number {
     width: 19px;
     height: 43px;
-    font-family: OpenSans;
+    font-family: 'Open Sans', sans-serif;
     font-size: 32px;
     font-weight: bold;
     font-style: normal;
@@ -85,7 +85,7 @@
 .count-name {
     width: 81px;
     height: 38px;
-    font-family: OpenSans;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-weight: bold;
     font-style: normal;
@@ -98,7 +98,7 @@
 
 .orders-title {
     height: 19px;
-    font-family: OpenSans;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-weight: bold;
     font-style: normal;
