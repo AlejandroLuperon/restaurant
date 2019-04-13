@@ -113,3 +113,14 @@
 .Active {
   color: #ffd500 !important;
 }
+
+.resolve {
+    background: #fff;
+    border: 1px solid #d7d7e6;
+    cursor: pointer;
+    color:#eb4515;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 5px 10px;
+    font-family: OpenSans;
+}

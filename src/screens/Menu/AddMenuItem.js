@@ -6,8 +6,7 @@ class AddMenuItem extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: "",
-            categories: ["Appetizer", "Dessert"],
+            item: "",
             category: "",
             price: "",
             ingredients: "",
@@ -17,6 +16,23 @@ class AddMenuItem extends Component {
     }
     handleAddItem = () => {
         console.log(this.state)
+        const { item, category, price, ingredients, calories } = this.state;
+        const obj = {
+            item,
+            category,
+            price,
+            ingredients,
+            calories
+        }
+        this.setState({
+            item: "",
+            category: "",
+            price: "",
+            ingredients: "",
+            calories: "",
+            showCategories: false
+        })
+        this.props.handleAddItem(obj)
     }
 
     handleChange = (e) => {
@@ -45,8 +61,8 @@ class AddMenuItem extends Component {
 
     render() {
         const { isOpen } = this.props;
-        const { name, ingredients, category, price, calories, showCategories } = this.state;
-        let { categories } = this.state;
+        const { item, ingredients, category, price, calories, showCategories } = this.state;
+        let { categories } = this.props;
         categories = categories.filter(c => (c.toLowerCase().includes(category.toLowerCase()) && c !== category))
         console.log(categories)
         return (
@@ -61,13 +77,13 @@ class AddMenuItem extends Component {
 
                                 <div className="form-group">
                                     <label className="col-form-label">Name</label>
-                                    <input type="text" className="form-control-sm form-control" placeholder="Name" value={name} name="name" onChange={this.handleChange} />
+                                    <input required type="text" className="form-control-sm form-control" placeholder="Name" value={item} name="item" onChange={this.handleChange} />
                                 </div>
                             </div>
                             <div className="col-6">
                                 <div className="form-group">
                                     <label className="col-form-label">Category</label>
-                                    <input type="text" className="form-control form-control-sm" placeholder="category" name="category" value={category} onChange={this.handleChange} onFocus={this.handleFocus} onBlur={this.handleBlur} />
+                                    <input required type="text" className="form-control form-control-sm" placeholder="category" name="category" value={category} onChange={this.handleChange} onFocus={this.handleFocus} onBlur={this.handleBlur} />
                                     <ul class="list-group category-list">
                                         {showCategories ?
                                             categories.map(category => (
@@ -84,20 +100,20 @@ class AddMenuItem extends Component {
                             <div className="col-6">
                                 <div className="form-group">
                                     <label>Price</label>
-                                    <input type="text" className="form-control form-control-sm" placeholder="Price" name="price" value={price} onChange={this.handleChange} />
+                                    <input required type="number" className="form-control form-control-sm" placeholder="Price" name="price" value={price} onChange={this.handleChange} />
                                 </div>
                             </div>
                             <div className="col-6">
 
                                 <div className="form-group">
                                     <label>Calories</label>
-                                    <input type="text" className="form-control form-control-sm" placeholder="Price" name="calories" value={calories} onChange={this.handleChange} />
+                                    <input required type="number" className="form-control form-control-sm" placeholder="Price" name="calories" value={calories} onChange={this.handleChange} />
                                 </div>
                             </div>
                         </div>
                         <div className="form-group">
                             <label>Ingredients</label>
-                            <textarea type="text" className="form-control form-control-sm" placeholder="Ingredients" name="ingredients" value={ingredients} onChange={this.handleChange} />
+                            <textarea required type="text" className="form-control form-control-sm" placeholder="Ingredients" name="ingredients" value={ingredients} onChange={this.handleChange} />
                         </div>
 
                     </form>

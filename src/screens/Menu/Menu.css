@@ -2,3 +2,63 @@
   margin-top: 15px;
   margin-bottom: 15px;
 }
+
+.menu-header {
+    margin-bottom: 20px;
+}
+.menu-header img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+.menu-header h3{
+    font-family: OpenSans;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+
+}
+
+.menu-header span {
+    font-family: OpenSans;
+    font-size: 14px;
+    font-weight: bold;
+    color: #eb4515;
+    background: #f5f7fa;
+    border:none;
+    cursor: pointer;
+}
+
+.menu-table span {
+    color: #94979b;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.menu-table p {
+    font-family: OpenSans;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0a0a14;
+    margin-bottom: 0;
+}
+
+.menu-table .sub-items{
+    margin-bottom: 0;
+    color: #0a0a14;
+    font-size: 14px;
+    font-weight: normal
+}
+
+.menu-table .edit {
+    font-family: OpenSans;
+    font-size: 14px;
+    line-height: 19.2px;
+    color: #6c6c72;
+    cursor: pointer;
+}
+.edit img {
+    width: 18px;
+    height: 19.2px;
+    object-fit: contain;
+}

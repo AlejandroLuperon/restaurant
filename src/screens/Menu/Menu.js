@@ -2,26 +2,30 @@ import React, { Component } from 'react';
 import MenuItem from './MenuItem'
 import AddMenuItem from './AddMenuItem';
 import "./Menu.css";
-import a from '../../assets/fill-1.svg'
+import add from '../../assets/add.png';
+import edit from '../../assets/edit.png'
 
 const data = [
     {
         item: "Pancake",
         ingredients: "pan, cake",
         price: 2,
-        category: "pancakes"
+        category: "Pancakes",
+        calories: 200
     },
     {
         item: "Pancake",
         ingredients: "pan, cake",
         price: 2,
-        category: "pancakes"
+        category: "Pancakes",
+        calories: 400
     },
     {
         item: "Pancake",
         ingredients: "pan, cake",
         price: 2,
-        category: "pancakes"
+        category: "Pancakes",
+        calories: 500
     }
 
 ]
@@ -30,7 +34,7 @@ class Menu extends Component {
     constructor() {
         super();
         this.state = {
-            items: [],
+            items: data,
             isOpen: false
         }
     }
@@ -41,14 +45,9 @@ class Menu extends Component {
             .then(response => {
                 console.log(response)
                 console.log(data)
-                var obj = {};
-                data.forEach(d => {
-                    if (obj[d.category]) obj[d.category].push(d)
-                    else obj[d.category] = [d]
-                })
-                console.log(obj)
+
                 this.setState({
-                    items: obj
+                    items: data
                 })
             })
     }
@@ -59,16 +58,31 @@ class Menu extends Component {
         })
     }
 
+    handleAddItem = (data) => {
+        console.log(data)
+        let { items } = this.state;
+        items.push(data);
+        this.setState({
+            items,
+            isOpen: false
+        })
+    }
+
     render() {
         const { items, isOpen } = this.state;
+        var obj = {};
+        items.forEach(d => {
+            if (obj[d.category]) obj[d.category].push(d)
+            else obj[d.category] = [d]
+        })
         return (
             <div class="container menu-container">
                 <div class="flex-row d-flex justify-content-between menu-header align-items-end">
                     <h3>RESTAURANT MENU</h3>
-                    <span onClick={this.toggleModal}>Add Menu item</span>
+                    <span onClick={this.toggleModal}><img src={add} /> Add Menu item</span>
                 </div>
-                <AddMenuItem isOpen={isOpen} toggleModal={this.toggleModal} />
-                <table className="table table-bordered" >
+                <AddMenuItem isOpen={isOpen} toggleModal={this.toggleModal} handleAddItem={this.handleAddItem} categories={Object.keys(obj)}/>
+                <table className="table table-bordered menu-table" >
                     <thead>
                         <tr>
                             <th scope="col">CATEGORY</th>
@@ -80,27 +94,34 @@ class Menu extends Component {
                     </thead>
                     <tbody>
 
-                        {Object.keys(items).map(key => (
+                        {Object.keys(obj).map(key => (
                             <React.Fragment>
                                 <tr>
-                                    <th rowSpan={items[key].length} style={{verticalAlign: "middle"}}>
+                                    <th rowSpan={obj[key].length} style={{ verticalAlign: "middle" }}>
                                         <div>
-                                        {key}
+                                            <p>{key}</p>
                                         </div>
                                     </th>
                                     <td>
-                                        <p>{items[key][0].item}</p>
-                                        <p>Ingredients : {items[key][0].ingredients}</p>
-                                        
+                                        <p >
+                                            {obj[key][0].item}
+                                        </p>
+                                        <p className="sub-items">
+                                            Ingredients : <span>{obj[key][0].ingredients}</span>
+                                        </p>
+                                        <p className="sub-items">
+                                            Calories : <span>{obj[key][0].calories}</span>
+                                        </p>
+
                                     </td>
                                     <td>
-                                        {items[key][0].price}
+                                        <p>{obj[key][0].price} $</p>
                                     </td>
                                     <td>
-                                        edit
-                                </td>
+                                        <p className="edit"><img src={edit} />Edit</p>
+                                    </td>
                                 </tr>
-                                <MenuItem items={items[key].slice(1)} category={key} markComplete={this.markComplete} />
+                                <MenuItem items={obj[key].slice(1)} category={key} markComplete={this.markComplete} />
                             </React.Fragment>
                         ))}
 
