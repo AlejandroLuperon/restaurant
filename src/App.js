@@ -18,10 +18,10 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <Route path="/active-orders" component={ActiveOrders} />
         <Route path="/reporting" component={Reporting} />
-      </BrowserRouter>
+      </Router>
     );
   }
 }
