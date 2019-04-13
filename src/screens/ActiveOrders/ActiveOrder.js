@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class ActiveOrder extends Component {
     constructor(props) {
         super(props);
-        let activeOrder = props.activeOrder;
         this.state = {
             activeOrder: props.activeOrder,
             seconds: 57,
@@ -17,11 +16,16 @@ class ActiveOrder extends Component {
                 minutes += 1;
             }
             this.setState({
-                activeOrder,
                 seconds,
                 minutes
             })
         }, 1000);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            activeOrder: nextProps.activeOrder
+        })
     }
 
     render() {
@@ -41,6 +45,9 @@ class ActiveOrder extends Component {
                     {activeOrder.table_number}
                 </th>
                 <td>
+                    {activeOrder.guest}
+                </td>
+                <td>
                     {activeOrder.name}
                 </td>
                 <td>
@@ -50,7 +57,10 @@ class ActiveOrder extends Component {
                     {minutes + ":" + seconds}
                 </td>
                 <td>
-                    <button type="button" className="btn btn-success" onClick={() => { this.props.markComplete(activeOrder.id) }}>Done</button>
+                    {activeOrder.chef}
+                </td>
+                <td>
+                    <div className="done" onClick={() => { this.props.markComplete(activeOrder.id) }}>Done</div>
                 </td>
             </tr>
         )

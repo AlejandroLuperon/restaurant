@@ -20,13 +20,18 @@ class Alert extends Component {
             active,
             message
         })
-        setTimeout(() => {
+        this.interval = setTimeout(() => {
             this.setState({
                 active: false,
                 message: ""
             })
         }, 2000)
     }
+
+    componentWillUnmount() {
+        console.log("hello")
+        clearTimeout(this.interval);
+      }
 
     render() {
         const { active, message } = this.state;

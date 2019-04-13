@@ -9,7 +9,7 @@
 .alert-main {
     position: fixed;
     width: 300px;
-    top: 60px;
+    top: 80px;
     right: 20px;
     background: rgba(255,255,255, 0.25)
 }
