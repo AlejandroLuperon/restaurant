@@ -102,11 +102,9 @@ class ActiveOrders extends Component {
                         </tr>
                     </thead>
                     <tbody>
-
                         {activeOrders.map(activeOrder => (
                             <ActiveOrder activeOrder={activeOrder} markComplete={this.markComplete} />
                         ))}
-
                     </tbody>
                 </table>
             </div>
