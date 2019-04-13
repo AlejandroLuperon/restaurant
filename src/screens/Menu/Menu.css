@@ -1,3 +1,7 @@
+.menu-container {
+  padding-top: 15px;
+}
+
 .menu-add {
   margin-top: 15px;
   margin-bottom: 15px;
@@ -12,7 +16,7 @@
     object-fit: contain;
 }
 .menu-header h3{
-    font-family: OpenSans;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-weight: bold;
     margin: 0;
@@ -20,7 +24,7 @@
 }
 
 .menu-header span {
-    font-family: OpenSans;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-weight: bold;
     color: #eb4515;
@@ -36,7 +40,7 @@
 }
 
 .menu-table p {
-    font-family: OpenSans;
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     font-weight: 600;
     color: #0a0a14;
@@ -51,7 +55,7 @@
 }
 
 .menu-table .edit {
-    font-family: OpenSans;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     line-height: 19.2px;
     color: #6c6c72;
