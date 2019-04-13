@@ -63,7 +63,7 @@ class ActiveOrders extends Component {
                 <div className="row margin-0">
                     <div className="count">
                         <div className="count-number">
-                            6
+                            {activeOrders.length}
                         </div>
                         <div className="count-name">
                             ACTIVE ORDERS
