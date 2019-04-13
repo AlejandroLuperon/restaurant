@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import ActiveOrders from '../screens/ActiveOrders/ActiveOrders';
-import Reporting from '../screens/Reporting';
+// import Reporting from '../screens/Reporting';
 import Menu from '../screens/Menu/Menu';
 import logo from '../assets/logo.png';
 import Link from './Link';
+import Reporting from '../screens/Reporting';
 import "./Navbar.css"
 import one from '../assets/navbar/1.svg';
 import reporting from '../assets/navbar/reporting.svg';

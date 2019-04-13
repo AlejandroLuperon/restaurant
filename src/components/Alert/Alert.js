@@ -38,7 +38,7 @@ class Alert extends Component {
         console.log(active)
         return (
             <div className={"card alert-main " + (active ? "alert-active" : "alert-inactive")}>
-                <div className="card-body">
+                <div class="card-body alert-body">
                     {message}
                 </div>
             </div>

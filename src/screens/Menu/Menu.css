@@ -1,0 +1,25 @@
+.menu-container {
+    padding-top: 40px;
+    
+}
+
+.menu-header {
+    margin-bottom: 20px;
+}
+.menu-header h3{
+    font-family: OpenSans;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+
+}
+
+.menu-header span {
+    font-family: OpenSans;
+    font-size: 14px;
+    font-weight: bold;
+    color: #eb4515;
+    background: #f5f7fa;
+    border:none;
+}
+

@@ -11,5 +11,15 @@
     width: 300px;
     top: 80px;
     right: 20px;
-    background: rgba(255,255,255, 0.25)
+    background: #fff;
+    border-radius: 0;
+    border: 1px solid #d7d7e6;
+
+}
+
+.alert-body {
+    font-family: OpenSans;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
 }
