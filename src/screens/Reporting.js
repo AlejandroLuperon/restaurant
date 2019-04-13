@@ -13,8 +13,17 @@ class Reporting extends Component {
   }
 
   componentWillMounte(data) {
-    fetch("http://localhost:8000/", {
-      method: "POST",
+    this.getReport(null);
+  }
+
+  getReport(query) {
+    let url = "http://3.82.213.92/Project/" + "orders";
+
+    if (query != null) {
+      url = url + "?" + query;
+    }
+    fetch(url, {
+      method: "GET",
       mode: "cors",
       cache: "no-cache",
       credentials: "same-origin",
@@ -22,8 +31,7 @@ class Reporting extends Component {
       "Content-Type": "application/json"
       },
       redirect: "follow",
-      referrer: "no-referrer",
-      body: JSON.stringify(data),
+      referrer: "no-referrer"
     }).then((response) => {
       return response.json();
     }).then((data)=>{
@@ -58,15 +66,53 @@ class Reporting extends Component {
 
     this.setState({
       results: map
+    });
+  }
+
+  onChangeStartDate(value) {
+    this.setState({
+      start_date: new Date(value.format("YYYY-MM-DDTHH:mm:ssZ"))
     })
+    let query = this.getQuery();
+    this.getReport(query);
   }
 
-  onChangeStartDate() {
+  getQuery() {
+    let params = [];
+    let query = null;
+    if (this.state.start_date = null) {
+      params.push("start_date=" + this.state.start_date);
+    }
 
+    if (this.state.end_date != null) {
+      params.push("end_date=" + this.state.end_date);
+    }
+
+    if (this.state.query != null) {
+      params.push("query=" + this.state.query);
+    }
+
+
+    if (params.length > 0) {
+      query = params.join("&")
+    }
+    return query;
   }
 
-  onChangeEndDate() {
+  onChangeEndDate(value) {
+    this.setState({
+      end_date: new Date(value.format("YYYY-MM-DDTHH:mm:ssZ"))
+    })
+    let query = this.getQuery();
+    this.getReport(query);
+  }
 
+  onChangeQuery(event) {
+    this.setState({
+      [event.target.name]: [event.target.value]
+    })
+    let query = this.getQuery();
+    this.getReport(query);
   }
 
   query() {
@@ -80,8 +126,15 @@ class Reporting extends Component {
   render(){
     const {results} = this.state;
     return (
-      <div>
-        <div class="flex-row d-flex">
+      <div className="container">
+        <div className="flex-row d-flex reporting-header">
+          <div className="flex-column d-flex align-items-start justify-content-center">
+            <label>Search</label>
+            <input
+              name="query"
+              onChange={this.onChangeQuery.bind(this)}
+              value={this.state.query} />
+          </div>
           <Calendar
             onChange={this.onChangeStartDate.bind(this)}
             label="Start Date"
@@ -91,16 +144,25 @@ class Reporting extends Component {
             label="End Date"
             size="full"/>
         </div>
-        <div>
-          {
-            Object.keys(results).map((key, index) => (
-              <div key={index} className="d-flex flex-row row">
-                <div className="col-3">{results[key]}</div>
-                <div className="col-3">{key}</div>
-              </div>
-            ))
-          }
-        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col"># Of Purchases</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              Object.keys(results).map((key, index) => (
+                <tr key={index}>
+                  <td>{results[key]}</td>
+                  <td>{key}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+
       </div>
     )
   }
