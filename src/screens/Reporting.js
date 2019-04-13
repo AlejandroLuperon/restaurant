@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import Calendar from '../components/Calendar'
-import { bindActionCreators } from 'redux';
 import './Reporting.css';
 
 class Reporting extends Component {
@@ -12,12 +10,9 @@ class Reporting extends Component {
     }
   }
 
-  componentWillMounte(data) {
-    this.getReport(null);
-  }
-
   getReport(query) {
-    let url = "http://3.82.213.92/Project/" + "orders";
+    let path = "orders"
+    let url = "http://54.166.71.233/" + path;
 
     if (query != null) {
       url = url + "?" + query;
@@ -40,38 +35,12 @@ class Reporting extends Component {
   }
 
   componentDidMount() {
-    this.getResults();
+    this.getReport();
   }
-
-  getResults() {
-    let json = [
-      {"name": "Veggie Pizza", "datetime": 12334134},
-      {"name": "Beer", "datetime": 122321},
-      {"name": "Pepperoni Pizza", "datetime": 12334134},
-      {"name": "Beer", "datetime": 122321},
-      {"name": "Pepperoni Pizza", "datetime": 12334134},
-      {"name": "Beer", "datetime": 122321}
-    ];
-
-    let map = {};
-
-    json.forEach((item)=>{
-      let name = item.name;
-      if (map[name]) {
-        map[name] = map[name] + 1;
-      } else {
-        map[name] = 1;
-      }
-    });
-
-    this.setState({
-      results: map
-    });
-  }
-
+  
   onChangeStartDate(value) {
     this.setState({
-      start_date: new Date(value.format("YYYY-MM-DDTHH:mm:ssZ"))
+      start_date: value.valueOf()
     })
     let query = this.getQuery();
     this.getReport(query);
@@ -80,7 +49,7 @@ class Reporting extends Component {
   getQuery() {
     let params = [];
     let query = null;
-    if (this.state.start_date = null) {
+    if (this.state.start_date != null) {
       params.push("start_date=" + this.state.start_date);
     }
 
@@ -92,7 +61,6 @@ class Reporting extends Component {
       params.push("query=" + this.state.query);
     }
 
-
     if (params.length > 0) {
       query = params.join("&")
     }
@@ -101,26 +69,20 @@ class Reporting extends Component {
 
   onChangeEndDate(value) {
     this.setState({
-      end_date: new Date(value.format("YYYY-MM-DDTHH:mm:ssZ"))
+      end_date: value.valueOf()
+    }, () => {
+      let query = this.getQuery();
+      this.getReport(query);
     })
-    let query = this.getQuery();
-    this.getReport(query);
   }
 
   onChangeQuery(event) {
     this.setState({
       [event.target.name]: [event.target.value]
-    })
-    let query = this.getQuery();
-    this.getReport(query);
-  }
-
-  query() {
-    return {
-      start_date: (this.state.start_date == null ? null : this.state.start_date),
-      end_date: (this.state.end_date == null ? null : this.state.end_date),
-      item: (this.state.item == null ? null : this.state.item)
-    }
+    }, () => {
+      let query = this.getQuery();
+      this.getReport(query);
+    });
   }
 
   render(){
@@ -144,7 +106,7 @@ class Reporting extends Component {
             label="End Date"
             size="full"/>
         </div>
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Item</th>

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import './Reporting.css';
 
 class ActiveOrders extends Component {
@@ -10,8 +8,7 @@ class ActiveOrders extends Component {
 
   render() {
     return (
-      <div className="container">Filler
-      </div>
+      <div className="container">Filler</div>
     );
   }
 }
