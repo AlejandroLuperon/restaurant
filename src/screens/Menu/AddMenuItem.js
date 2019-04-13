@@ -55,23 +55,23 @@ class AddMenuItem extends Component {
                     <form>
                         <div className="form-group">
                             <label>Name</label>
-                            <input type="text" className="form-control" placeholder="Name" value={name} name="name" onChange={this.handleChange} />
+                            <input type="text" className="form-control foodbar-input" placeholder="Name" value={name} name="name" onChange={this.handleChange} />
                         </div>
                         <div className="form-group">
                             <label>Ingredients</label>
-                            <input type="text" className="form-control" placeholder="Ingredients" name="ingredients" value={ingredients} onChange={this.handleChange} />
+                            <input type="text" className="form-control foodbar-input" placeholder="Ingredients" name="ingredients" value={ingredients} onChange={this.handleChange} />
                         </div>
                         <div className="form-group">
                             <label>Price</label>
-                            <input type="text" className="form-control" placeholder="Price" name="price" value={price} onChange={this.handleChange} />
+                            <input type="text" className="form-control foodbar-input" placeholder="Price" name="price" value={price} onChange={this.handleChange} />
                         </div>
                         <div className="form-group">
                             <label>Calories</label>
-                            <input type="text" className="form-control" placeholder="Price" name="calories" value={calories} onChange={this.handleChange} />
+                            <input type="text" className="form-control foodbar-input" placeholder="Price" name="calories" value={calories} onChange={this.handleChange} />
                         </div>
                         <div className="form-group">
                             <label>Category</label>
-                            <input type="text" className="form-control" placeholder="category" name="category" value={category} onChange={this.handleChange} onFocus={this.handleFocus} onBlur={this.handleBlur} />
+                            <input type="text" className="form-control foodbar-input" placeholder="category" name="category" value={category} onChange={this.handleChange} onFocus={this.handleFocus} onBlur={this.handleBlur} />
                             <ul class="list-group">
                                 {showCategories ?
                                     categories.map(category => (

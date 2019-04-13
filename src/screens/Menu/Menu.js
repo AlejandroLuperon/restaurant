@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MenuItem from './MenuItem'
 import AddMenuItem from './AddMenuItem';
+import './Menu.css'
 
 class Menu extends Component {
     constructor() {
@@ -12,7 +13,7 @@ class Menu extends Component {
     }
 
     componentDidMount() {
-        fetch("http://54.166.71.233/active_orders")
+        fetch("http://54.166.71.233/active_orders?vendor_id=1")
             .then(res => res.json())
             .then(response => {
                 console.log(response)
@@ -31,8 +32,8 @@ class Menu extends Component {
     render() {
         const { items, isOpen } = this.state;
         return (
-            <div>
-                <button class="btn btn-primary" onClick={this.toggleModal}>Add new menu item</button>
+            <div className="container">
+                <button class="menu-add btn btn-primary" onClick={this.toggleModal}>Add new menu item</button>
                 <AddMenuItem isOpen={isOpen} toggleModal={this.toggleModal}/>
                 <table className="table table-bordered" >
                     <thead>

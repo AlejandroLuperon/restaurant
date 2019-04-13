@@ -45,9 +45,7 @@ class ActiveOrders extends Component {
 
     markComplete = (id) => {
         let { activeOrders } = this.state;
-        console.log(activeOrders, id)
         activeOrders = activeOrders.filter(activeOrder => (activeOrder.id !== id))
-        console.log(activeOrders)
         this.setState({
             activeOrders,
             active: true,
