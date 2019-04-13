@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import ActiveOrders from './screens/ActiveOrders';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import logo from './logo.svg';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import ActiveOrders from './screens/ActiveOrders/ActiveOrders';
 import Reporting from './screens/Reporting';
-import Engagement from './screens/Engagement';
-import Outreach from './screens/Outreach';
+import Menu from './screens/Menu/Menu';
+import Navbar from './components/Navbar';
+
 import './App.css';
 
 class App extends Component {
@@ -16,13 +20,22 @@ class App extends Component {
   }
 
   render() {
+    const menuItems = [
+      { name: "Active Orders", path: "/active-orders" },
+      { name: "Reporting", path: "/reporting" },
+      { name: "Menu", path: "/menu" }
+    ]
     return (
-      <Router>
-        <Route path="/active-orders" component={ActiveOrders} />
-        <Route path="/reporting" component={Reporting} />
-        <Route path="/engagement" component={Engagement} />
-        <Route path="/outreach" component={Outreach} />
-      </Router>
+      <div>
+        <Router>
+          <Navbar menuItems={menuItems} />
+
+          <Route path="/active-orders" component={ActiveOrders} />
+          <Route path="/menu" component={Menu} />
+          {/* <Route path="/reporting" component={Reporting} /> */}
+        </Router>
+      </div>
+
     );
   }
 }

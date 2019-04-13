@@ -1,0 +1,45 @@
+import React, { PureComponent, Component } from 'react';
+import { CSSTransition } from 'react-transition-group';
+
+import './Alert.css';
+
+class Alert extends Component {
+    constructor(props) {
+        super(props);
+        const { active, message } = props;
+        this.state = {
+            active,
+            message
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps)
+        const { active, message } = nextProps;
+        this.setState({
+            active,
+            message
+        })
+        setTimeout(() => {
+            this.setState({
+                active: false,
+                message: ""
+            })
+        }, 2000)
+    }
+
+    render() {
+        const { active, message } = this.state;
+        console.log(active)
+        return (
+            <div className={"card alert-main " + (active ? "alert-active" : "alert-inactive")}>
+                <div class="card-body">
+                    {message}
+                </div>
+            </div>
+
+        )
+    }
+}
+
+export default Alert;

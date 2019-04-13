@@ -1,0 +1,15 @@
+.alert-active {
+    display: block;
+}
+
+.alert-inactive {
+    display: none;
+}
+
+.alert-main {
+    position: fixed;
+    width: 300px;
+    top: 60px;
+    right: 20px;
+    background: rgba(255,255,255, 0.25)
+}
