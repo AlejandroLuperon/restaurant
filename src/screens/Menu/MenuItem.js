@@ -5,10 +5,10 @@ class MenuItem extends Component {
         super(props)
     }
     render() {
-        const {item} = this.props;
+        const { item } = this.props;
         return (
             <tr key={item.id}>
-                <th>
+                <th rowSpan={item.length}>
                     {item.table_number}
                 </th>
                 <td>

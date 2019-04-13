@@ -1,0 +1,29 @@
+.modal-content {
+    border-radius: 0;
+}
+.cancel-button {
+    background: #EFEFFB;
+    border: none;
+    color: #545354;
+    border-radius: 0;
+}
+.add-button {
+    background: #43CC9F;
+    border: none;
+    color: #fff;
+    border-radius: 0;
+}
+
+.modal-body label {
+    color: #494949;
+}
+
+.modal-form input {
+    border-radius: 0;
+}
+
+.category-list {
+    position: absolute;
+    z-index: 100;
+    width: 90%;
+}
