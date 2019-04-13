@@ -94,7 +94,7 @@ class Reporting extends Component {
       <div className="container">
         <div className="flex-row d-flex reporting-header">
           <div className="flex-column d-flex align-items-start justify-content-center">
-            <label>Search</label>
+            <label className="calendar-label">Search</label>
             <input
               name="query"
               onChange={this.onChangeQuery.bind(this)}

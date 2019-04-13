@@ -16,17 +16,26 @@ class ActiveOrders extends Component {
     }
 
     componentDidMount() {
-        fetch("http://54.166.71.233/active_orders")
+      this.getActiveOrders();
+      this.timer = setInterval(()=> this.getActiveOrders(), 5000);
+    }
+
+    componentWillUnmount() {
+      this.timer = null; // here...
+    }
+
+    getActiveOrders() {
+        fetch("http://54.166.71.233/active_orders?vendor_id=1")
             .then(res => res.json())
             .then(response => {
-
+                console.log(response, "LOOK HERE");
                 response = response.map(r => ({
                     ...r,
                     guest: "Bhaskar",
                     count: 1,
                     chef: "Chef"
                 }))
-                console.log(response)
+
                 this.setState({
                     activeOrders: response
                 })
@@ -54,7 +63,7 @@ class ActiveOrders extends Component {
                 <div className="row margin-0">
                     <div className="count">
                         <div className="count-number">
-                            6
+                            {activeOrders.length}
                         </div>
                         <div className="count-name">
                             ACTIVE ORDERS
@@ -91,6 +100,7 @@ class ActiveOrders extends Component {
                             <th scope="col">Time</th>
                             <th scope="col">Chef</th>
                             <th scope="col">Status</th>
+                            <th scope="col">Resolve</th>
                         </tr>
                     </thead>
                     <tbody>

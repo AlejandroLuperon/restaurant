@@ -7,8 +7,8 @@ import logo from '../assets/logo.png';
 import Link from './Link';
 import "./Navbar.css"
 import one from '../assets/navbar/1.svg';
-import two from '../assets/navbar/2.svg';
-import three from '../assets/navbar/3.svg';
+import reporting from '../assets/navbar/reporting.svg';
+import dashboard from '../assets/navbar/dashboard.svg';
 import four from '../assets/navbar/4.svg';
 import five from '../assets/navbar/5.svg';
 
@@ -29,10 +29,10 @@ class Navbar extends Component {
                 FOOD BAR
               </div>
             </div>
-            <div style={{paddingLeft: '15px'}}>
-              <Link src={one} onClick={() => this.handleClick("/active-orders")} label="Dashboard" />
-              <Link src={two} onClick={() => this.handleClick("/reporting")} label="Reporting" />
-              <Link src={three} onClick={() => this.handleClick("/menu")} label="Menu Management" />
+            <div style={{paddingLeft: '35px', paddingRight: '45px', paddingTop: '30px'}}>
+              <Link src={dashboard} onClick={() => this.handleClick("/active-orders")} label="Dashboard" />
+              <Link src={reporting} onClick={() => this.handleClick("/reporting")} label="Reporting" />
+              <Link src={one} onClick={() => this.handleClick("/menu")} label="Menu Management" />
               <Link src={four} onClick={() => this.handleClick("/staff")} label="Staff Management" />
             </div>
           </nav>
