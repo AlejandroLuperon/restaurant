@@ -16,12 +16,12 @@ class ActiveOrders extends Component {
     }
 
     componentDidMount() {
-      this.getActiveOrders();
-      this.timer = setInterval(()=> this.getActiveOrders(), 5000);
+        this.getActiveOrders();
+        this.timer = setInterval(() => this.getActiveOrders(), 5000);
     }
 
     componentWillUnmount() {
-      this.timer = null; // here...
+        this.timer = null; // here...
     }
 
     getActiveOrders() {
@@ -29,10 +29,10 @@ class ActiveOrders extends Component {
             .then(res => res.json())
             .then(response => {
                 console.log(response, "LOOK HERE");
-                response = response.map(r => ({
+                response = response.map((r, i) => ({
                     ...r,
-                    guest: "Bhaskar",
                     count: 1,
+                    id: i,
                     chef: "Chef"
                 }))
 
@@ -48,11 +48,20 @@ class ActiveOrders extends Component {
         console.log(activeOrders, id)
         activeOrders = activeOrders.filter(activeOrder => (activeOrder.id !== id))
         console.log(activeOrders)
+        // fetch("http://54.166.71.233/active_orders?vendor_id=1",{
+        //     method: 'POST'
+        // })
         this.setState({
             activeOrders,
             active: true,
             message: `Order number ${id} prepared`
         })
+        setTimeout(() => {
+            this.setState({
+                active: false,
+                message: ""
+            })
+        }, 2000)
     }
 
     render() {
@@ -94,9 +103,9 @@ class ActiveOrders extends Component {
                     <thead>
                         <tr>
                             <th scope="col">Table</th>
-                            <th scope="col">Guests</th>
                             <th scope="col">Order</th>
                             <th scope="col">Count</th>
+                            <th scope="col">Special Instructions</th>
                             <th scope="col">Time</th>
                             <th scope="col">Chef</th>
                             <th scope="col">Status</th>

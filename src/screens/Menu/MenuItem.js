@@ -5,22 +5,29 @@ class MenuItem extends Component {
         super(props)
     }
     render() {
-        const { item } = this.props;
+        const { items } = this.props;
         return (
-            <tr key={item.id}>
-                <th rowSpan={item.length}>
-                    {item.table_number}
-                </th>
-                <td>
-                    {item.name}
+
+            items.map(item => (
+                <tr key={item.id}>
+                    <td>
+                        <p>
+                            {item.item}
+                        </p>
+                        <p>
+                            {item.ingredients}
+                        </p>
+
+                    </td>
+                    <td>
+                        {item.price}
+                    </td>
+                    <td>
+                        edit
                 </td>
-                <td>
-                    {item.count}
-                </td>
-                <td>
-                    "Ingredients"
-                </td>
-            </tr>
+                </tr>
+            ))
+
         )
     }
 }

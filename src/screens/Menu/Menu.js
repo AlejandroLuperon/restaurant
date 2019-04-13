@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MenuItem from './MenuItem'
 import AddMenuItem from './AddMenuItem';
 import "./Menu.css";
+import a from '../../assets/fill-1.svg'
 
 const data = [
     {
@@ -80,7 +81,27 @@ class Menu extends Component {
                     <tbody>
 
                         {Object.keys(items).map(key => (
-                            <MenuItem item={items[key]} markComplete={this.markComplete} />
+                            <React.Fragment>
+                                <tr>
+                                    <th rowSpan={items[key].length} style={{verticalAlign: "middle"}}>
+                                        <div>
+                                        {key}
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <p>{items[key][0].item}</p>
+                                        <p>Ingredients : {items[key][0].ingredients}</p>
+                                        
+                                    </td>
+                                    <td>
+                                        {items[key][0].price}
+                                    </td>
+                                    <td>
+                                        edit
+                                </td>
+                                </tr>
+                                <MenuItem items={items[key].slice(1)} category={key} markComplete={this.markComplete} />
+                            </React.Fragment>
                         ))}
 
                     </tbody>
