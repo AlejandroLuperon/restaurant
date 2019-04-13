@@ -29,7 +29,6 @@ class App extends Component {
       <div>
         <Router>
           <Navbar menuItems={menuItems} />
-          {/* <Route path="/reporting" component={Reporting} /> */}
         </Router>
       </div>
 
