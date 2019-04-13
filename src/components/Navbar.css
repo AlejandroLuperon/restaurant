@@ -69,5 +69,9 @@
 }
 
 .sidebar-container {
-  min-width: 245px;
+
+}
+
+.navbar {
+  background-color: unset;
 }

@@ -43,14 +43,14 @@ class Navbar extends Component {
           <span className="navbar-toggler-icon"></span>
         </button> */}
 
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav ml-auto">
+            <div style={{height: '40px'}} className="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul className="navbar-nav ml-auto"><li className="nav-item"></li>
                 {
-                  menuItems.map((item, index) => (
+                  /*menuItems.map((item, index) => (
                     <li key={index} className="nav-item" onClick={() => this.handleClick(item.path)}>
                       <a className="nav-link">{item.name}<span className="sr-only">(current)</span></a>
                     </li>
-                  ))
+                  ))*/
                 }
               </ul>
             </div>
