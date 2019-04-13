@@ -11,7 +11,8 @@ class ActiveOrders extends Component {
         this.state = {
             activeOrders: [],
             active: false,
-            message: ""
+            message: "",
+            completed: []
         }
     }
 
@@ -29,12 +30,14 @@ class ActiveOrders extends Component {
             .then(res => res.json())
             .then(response => {
                 console.log(response, "LOOK HERE");
+                const {completed} = this.state;
                 response = response.map((r, i) => ({
                     ...r,
                     count: 1,
                     id: i,
                     chef: "Chef"
                 }))
+                response = response.filter(r => completed.indexOf(r.special_id) === -1)
 
                 this.setState({
                     activeOrders: response
@@ -43,13 +46,20 @@ class ActiveOrders extends Component {
 
     }
 
-    markComplete = (id) => {
-        let { activeOrders } = this.state;
-        activeOrders = activeOrders.filter(activeOrder => (activeOrder.id !== id))
+    markComplete = (special_id) => {
+        let { activeOrders, completed } = this.state;
+        // console.log(activeOrders, id)
+        activeOrders = activeOrders.filter(activeOrder => (activeOrder.special_id !== special_id))
+        console.log(activeOrders)
+        // fetch("http://54.166.71.233/active_orders?vendor_id=1",{
+        //     method: 'POST'
+        // })
+        completed.push(special_id)
         this.setState({
             activeOrders,
             active: true,
-            message: `Order number ${id} prepared`
+            message: `Order number ${special_id} prepared`,
+            completed
         })
         setTimeout(() => {
             this.setState({
@@ -108,9 +118,11 @@ class ActiveOrders extends Component {
                         </tr>
                     </thead>
                     <tbody>
+
                         {activeOrders.map(activeOrder => (
                             <ActiveOrder activeOrder={activeOrder} markComplete={this.markComplete} />
                         ))}
+
                     </tbody>
                 </table>
             </div>

@@ -172,8 +172,8 @@ class Reporting extends Component {
                 Expenses
                 </div>
               <div className="card-body">
-                <p>Monthly</p>
-                <h4>$7392</h4>
+                <p>Weekly</p>
+                <h4>$2008</h4>
               </div>
             </div>
             <div className="card expense-card">
